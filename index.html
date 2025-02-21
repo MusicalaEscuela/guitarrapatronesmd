@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrones de Guitarra - Mano Derecha</title>
+
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 120px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h1, h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555555;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        /* Botones */
+        .level-btn, .generate-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .level-btn:hover, .generate-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Sección de patrones */
+        #pattern-display {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #007BFF;
+        }
+
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        /* Sección explicativa */
+        .explanation {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .explanation ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .explanation li {
+            margin-bottom: 10px;
+        }
+
+        .explanation span {
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #888888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Logo -->
+    <img src="https://static.wixstatic.com/media/85afce_3adb3865c88a492b93a8bf2dc69049c3~mv2.png" alt="Logo" class="logo">
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        <h1>Patrones de Mano Derecha para Guitarra 🎸</h1>
+        <p>Selecciona un nivel de dificultad para explorar los patrones o usa el generador aleatorio.</p>
+
+        <!-- Botones por Niveles -->
+        <div>
+            <button class="level-btn" onclick="showPatterns(1)">🎵 Patrones de 1 dedo</button>
+            <button class="level-btn" onclick="showPatterns(2)">🎵 Patrones de 2 dedos</button>
+            <button class="level-btn" onclick="showPatterns(3)">🎵 Patrones de 3 dedos</button>
+            <button class="level-btn" onclick="showPatterns(4)">🎵 Patrones de 4 dedos</button>
+        </div>
+
+        <!-- Contenedor de la Tabla de Patrones -->
+        <div id="patterns-table"></div>
+
+        <!-- Generador Aleatorio -->
+        <h2>Generador de Patrones Aleatorios 🎶</h2>
+        <div id="pattern-display">P I M A</div>
+        <button class="generate-btn" onclick="generatePattern()">🔀 Generar Patrón</button>
+
+        <!-- Sección Explicativa -->
+        <div class="explanation">
+            <h2>¿Qué significan P, I, M y A? 🤔</h2>
+            <ul>
+                <li><span>P</span> — <strong>Pulgar:</strong> Usado principalmente para las cuerdas graves (6ª, 5ª y 4ª).</li>
+                <li><span>I</span> — <strong>Índice:</strong> Toca principalmente la 3ª cuerda.</li>
+                <li><span>M</span> — <strong>Medio:</strong> Utilizado comúnmente en la 2ª cuerda.</li>
+                <li><span>A</span> — <strong>Anular:</strong> Se usa en la 1ª cuerda.</li>
+            </ul>
+
+            <h2>¿Por qué practicar estos patrones? 🎯</h2>
+            <p>Estos patrones ayudan a mejorar la coordinación, precisión y velocidad en la técnica de mano derecha.</p>
+            <ul>
+                <li>✅ Independencia de los dedos.</li>
+                <li>✅ Consistencia en el tono y volumen.</li>
+                <li>✅ Fluidez en arpegios y melodías.</li>
+            </ul>
+
+            <h2>Consejos para practicar 📝</h2>
+            <ul>
+                <li>🎵 Comienza despacio con metrónomo y aumenta gradualmente la velocidad.</li>
+                <li>🧘‍♂️ Mantén la mano relajada para evitar tensiones.</li>
+                <li>🔁 Repite cada patrón varias veces para afianzar la memoria muscular.</li>
+                <li>🎶 <strong>Practica en una sola cuerda</strong> para perfeccionar el movimiento de cada dedo.</li>
+                <li>🎸 Luego, realiza los patrones <strong>asignando cada dedo a su cuerda correspondiente</strong> (P para graves, A para agudos, etc.).</li>
+            </ul>
+        </div>
+
+        <!-- Copyright -->
+        <p class="copyright">© 2025 Musicala. Todos los derechos de uso son propiedad de Musicala.</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Lista de dedos
+        const fingers = ['P', 'I', 'M', 'A'];
+
+        // Función para generar patrón aleatorio
+        function generatePattern() {
+            const patternLength = Math.floor(Math.random() * 4) + 1;
+            let availableFingers = [...fingers];
+            let pattern = [];
+
+            for (let i = 0; i < patternLength; i++) {
+                const randomIndex = Math.floor(Math.random() * availableFingers.length);
+                pattern.push(availableFingers[randomIndex]);
+                availableFingers.splice(randomIndex, 1);
+            }
+
+            document.getElementById('pattern-display').innerText = pattern.join(' ');
+        }
+
+        // Función para mostrar patrones por nivel
+        function showPatterns(level) {
+            const tableContainer = document.getElementById('patterns-table');
+            tableContainer.innerHTML = ''; // Limpiar contenido previo
+
+            const patterns = generateAllPatterns(level);
+            let tableHTML = `<h2>Patrones de ${level} dedo${level > 1 ? 's' : ''}</h2>`;
+            tableHTML += `<table><tr><th>#</th><th>Patrón</th></tr>`;
+
+            patterns.forEach((pattern, index) => {
+                tableHTML += `<tr><td>${index + 1}</td><td>${pattern.join(' ')}</td></tr>`;
+            });
+
+            tableHTML += `</table>`;
+            tableContainer.innerHTML = tableHTML;
+        }
+
+        // Función para generar todas las combinaciones por nivel
+        function generateAllPatterns(length) {
+            const results = [];
+
+            function permute(arr, m = []) {
+                if (m.length === length) {
+                    results.push(m);
+                    return;
+                }
+                for (let i = 0; i < arr.length; i++) {
+                    permute(arr.filter((_, idx) => idx !== i), m.concat(arr[i]));
+                }
+            }
+
+            permute(fingers);
+            return results;
+        }
+
+        // Generar un patrón inicial al cargar la página
+        window.onload = generatePattern;
+    </script>
+
+</body>
+</html>
